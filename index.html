@@ -3,37 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Lookbook & Travel Diary</title>
+  <title>Ayushi's Lookbook & Travel Diary</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: #fdfdfd;
+      color: #333;
     }
     header {
       text-align: center;
-      padding: 2rem;
-      background: #333;
+      padding: 2.5rem 1rem;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
       color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .intro {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
     }
     .tiles {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       padding: 2rem;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: auto;
     }
     .tile {
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.1);
       background: white;
-      transition: transform 0.2s ease;
+      transition: transform 0.25s ease;
     }
     .tile:hover {
-      transform: scale(1.03);
+      transform: translateY(-5px) scale(1.03);
     }
     .tile img {
       width: 100%;
@@ -43,39 +62,68 @@
     }
     .tile h3 {
       margin: 0;
-      padding: 1rem;
+      padding: 0.8rem 1rem 0;
       text-align: center;
-      background: #fff;
-      font-size: 1.2rem;
-      color: #333;
+      font-size: 1.3rem;
+      color: #222;
+    }
+    .tile p {
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 0.5rem 1rem 1rem;
+      color: #666;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background: #f0f0f0;
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
     }
     #status {
       text-align: center;
       padding: 1rem;
-      color: #666;
+      color: #999;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Ayushi's Lookbook ✨</h1>
-    <p>Travel diary of my favourite places</p>
+    <p>A pocket of memories, colors & wanderlust</p>
   </header>
+
+  <section class="intro">
+    <p>
+      Welcome to my travel diary. It’s not just photos — it’s moods, moments, and little sparks of joy 
+      I stumbled upon along the way. Every tile you see here is a portal to a memory I hold close. 
+      Think of this as my <strong>scrapbook for the soul</strong> 🌸
+    </p>
+  </section>
 
   <section class="tiles">
     <div class="tile">
-      <img src="https://images.unsplash.com/photo-1589307004398-fb1a3f0c44b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Bangalore">
+      <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=1200&q=80" alt="Bangalore">
       <h3>Bangalore</h3>
+      <p>Morning coffees, drizzles, and conversations that never end ☕🌧️</p>
     </div>
     <div class="tile">
-      <img src="https://images.unsplash.com/photo-1603281897499-91342dcb112a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Goa">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Goa">
       <h3>Goa</h3>
+      <p>Sunsets that feel like slow-motion and laughter that echoes with the sea 🌊✨</p>
     </div>
     <div class="tile">
-      <img src="https://images.unsplash.com/photo-1524492449090-1a065f4ccf2b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Mumbai">
+      <img src="https://images.unsplash.com/photo-1603262110263-fb4fb2adfbea?auto=format&fit=crop&w=1200&q=80" alt="Mumbai">
       <h3>Mumbai</h3>
+      <p>Chaos, lights, and dreams that refuse to sleep 🌃💫</p>
     </div>
   </section>
+
+  <footer>
+    This lookbook is a living diary — I’ll keep adding new places, new quirks, new moods. Stay tuned 🌍✨
+  </footer>
 
   <div id="status"></div>
 
