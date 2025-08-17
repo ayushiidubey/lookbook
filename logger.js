@@ -64,7 +64,7 @@
       utm
     };
 
-    await fetch('YOUR_GAS_URL_HERE', {
+    await fetch('https://script.google.com/macros/s/AKfycbwQ0OYQ3ig_e62-U0Bh9hOV86WgqQzcCxM9rWmfgLYzrDiitTg5t-abb4_yZaGTepXFHQ/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
