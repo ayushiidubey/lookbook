@@ -38,7 +38,7 @@
       utm
     };
 
-    const resp = await fetch('https://script.google.com/macros/s/AKfycbwONkDZ9aLdow2GCe5LcFCuwg8GTBSmXV8IFcwPNQWPc5eb-QWhqJRHdq1A0xS-DQD0KA/exec', {
+    const resp = await fetch('https://script.google.com/macros/s/AKfycbwQ0OYQ3ig_e62-U0Bh9hOV86WgqQzcCxM9rWmfgLYzrDiitTg5t-abb4_yZaGTepXFHQ/exec', {
       method: 'POST',
       mode: 'no-cors', // GAS returns opaque to browsers; that's fine for logging
       headers: { 'Content-Type': 'application/json' },
