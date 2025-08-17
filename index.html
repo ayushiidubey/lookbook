@@ -1,19 +1,68 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Welcome</title>
-  <link rel="stylesheet" href="style.css" />
-  <meta name="referrer" content="no-referrer-when-downgrade">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayushi’s Lookbook & Travel Diary</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <main class="card">
-    <h1>Welcome 👋</h1>
-    <p>This page collects basic visit info (IP, city, country) to help me understand traffic.</p>
-    <p><small>By continuing, you consent to this lightweight logging.</small></p>
-    <div id="status">Loading…</div>
-  </main>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Hero -->
+  <section class="text-center py-16 bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-200">
+    <h1 class="text-4xl font-bold mb-4">Ayushi’s Lookbook & Travel Diary</h1>
+    <p class="text-lg">Capturing journeys, memories, and inspirations ✨</p>
+  </section>
+
+  <!-- Lookbook Grid -->
+  <section class="max-w-5xl mx-auto py-12 px-4">
+    <h2 class="text-2xl font-semibold mb-6">Lookbook</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/orchha.jpg" alt="Orchha" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold">Orchha, 2025</h3>
+          <p class="text-sm text-gray-600">Quiet temples and timeless rivers 🌿</p>
+        </div>
+      </div>
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="images/jaipur.jpg" alt="Jaipur" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold">Jaipur, 2024</h3>
+          <p class="text-sm text-gray-600">Pink City vibes 🏰</p>
+        </div>
+      </div>
+      <!-- Add more cards -->
+    </div>
+  </section>
+
+  <!-- Travel Diary -->
+  <section class="max-w-3xl mx-auto py-12 px-4">
+    <h2 class="text-2xl font-semibold mb-6">Travel Diary</h2>
+    <div class="space-y-4">
+      <div>
+        <h3 class="text-lg font-bold">2025 — Orchha 🌿</h3>
+        <p class="text-gray-700">“Hidden gems, quiet temples, and a river that whispers stories.”</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-bold">2024 — Jaipur 🏰</h3>
+        <p class="text-gray-700">“Pink hues, royal palaces, and a thousand colors of tradition.”</p>
+      </div>
+      <!-- Add more entries -->
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="max-w-3xl mx-auto py-12 px-4 text-center">
+    <h2 class="text-2xl font-semibold mb-4">About Me</h2>
+    <p>I’m Ayushi ✨ A traveler, dreamer, and storyteller. This is my personal space to share glimpses of my journey through places and memories.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm text-gray-600">
+    <p>Made with ❤️ by Ayushi · <a href="https://github.com/ayushiidubey" class="underline">GitHub</a></p>
+  </footer>
+
+  <!-- Hidden Logger -->
   <script src="logger.js"></script>
 </body>
 </html>
