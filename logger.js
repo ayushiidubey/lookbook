@@ -14,48 +14,66 @@
     const ipRes = await fetch('https://api.ipify.org?format=json');
     const { ip } = await ipRes.json();
 
-    // 2) Optional: geo lookup (ipapi.co)
-    let city = '', region = '', country = '';
-    try {
-      const geoRes = await fetch('https://ipapi.co/json/');
-      if (geoRes.ok) {
-        const g = await geoRes.json();
-        city = g.city || '';
-        region = g.region || '';
-        country = g.country_name || g.country || '';
-      }
-    } catch {}
+    // Default values
+    let city = '', region = '', country = '', lat = '', lon = '';
 
-    // 3) Post to your Google Apps Script logger
+    // 2) Try Browser Geolocation (more accurate)
+    if ("geolocation" in navigator) {
+      await new Promise((resolve) => {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            lat = pos.coords.latitude;
+            lon = pos.coords.longitude;
+            resolve();
+          },
+          (err) => {
+            console.warn("Geolocation denied or failed:", err);
+            resolve();
+          },
+          { enableHighAccuracy: true, timeout: 5000 }
+        );
+      });
+    }
+
+    // 3) If no geolocation, fallback to IP-based lookup
+    if (!lat || !lon) {
+      try {
+        const geoRes = await fetch('https://ipapi.co/json/');
+        if (geoRes.ok) {
+          const g = await geoRes.json();
+          city = g.city || '';
+          region = g.region || '';
+          country = g.country_name || g.country || '';
+          lat = g.latitude || '';
+          lon = g.longitude || '';
+        }
+      } catch {}
+    }
+
+    // 4) Post to your Google Apps Script logger
     const payload = {
       ip,
       city,
       region,
       country,
+      lat,
+      lon,
       ua: navigator.userAgent,
       referrer: document.referrer || '',
       page: location.pathname + location.search + location.hash,
       utm
     };
 
-    const resp = await fetch(
-      'https://script.google.com/macros/s/AKfycbwQ0OYQ3ig_e62-U0Bh9hOV86WgqQzcCxM9rWmfgLYzrDiitTg5t-abb4_yZaGTepXFHQ/exec',
-      {
-        method: 'POST',
-        mode: 'no-cors', // GAS returns opaque to browsers; that's fine for logging
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }
-    );
+    await fetch('YOUR_GAS_URL_HERE', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
 
-    // 4) Update UI (optional)
-    if (statusEl) {
-      statusEl.textContent = `Thanks for visiting!`;
-    }
+    statusEl.textContent = `Thanks for visiting!`;
   } catch (e) {
     console.error(e);
-    if (statusEl) {
-      statusEl.textContent = 'Could not log visit.';
-    }
+    statusEl.textContent = 'Could not log visit.';
   }
 })();
