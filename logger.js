@@ -38,7 +38,7 @@
       utm
     };
 
-    const resp = await fetch('https://script.google.com/a/macros/razorpay.com/s/AKfycbygpAXk0TFgrm49I75FYPbKCUUk559l3Z5Jzc0KiMDT1zQr7WVAPhSNAq_GwSmxInf2/exec', {
+    const resp = await fetch('https://script.google.com/macros/s/AKfycbwONkDZ9aLdow2GCe5LcFCuwg8GTBSmXV8IFcwPNQWPc5eb-QWhqJRHdq1A0xS-DQD0KA/exec', {
       method: 'POST',
       mode: 'no-cors', // GAS returns opaque to browsers; that's fine for logging
       headers: { 'Content-Type': 'application/json' },
