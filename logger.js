@@ -26,7 +26,7 @@
       }
     } catch {}
 
-    // 3) Prepare base payload
+    // 3) Post to your Google Apps Script logger
     const payload = {
       ip,
       city,
@@ -38,39 +38,24 @@
       utm
     };
 
-    // 3.5) Try to add precise browser location (if user allows)
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          payload.lat = pos.coords.latitude;
-          payload.lon = pos.coords.longitude;
-
-          // Send once coords are available
-          sendPayload(payload);
-        },
-        (err) => {
-          console.warn("Geo error:", err);
-          // Fallback: send without lat/lon
-          sendPayload(payload);
-        },
-        { enableHighAccuracy: true, timeout: 5000 }
-      );
-    } else {
-      // No geolocation support → fallback
-      sendPayload(payload);
-    }
-
-    function sendPayload(data) {
-      fetch('https://script.google.com/macros/s/AKfycbwQ0OYQ3ig_e62-U0Bh9hOV86WgqQzcCxM9rWmfgLYzrDiitTg5t-abb4_yZaGTepXFHQ/exec', {
+    const resp = await fetch(
+      'https://script.google.com/macros/s/AKfycbwQ0OYQ3ig_e62-U0Bh9hOV86WgqQzcCxM9rWmfgLYzrDiitTg5t-abb4_yZaGTepXFHQ/exec',
+      {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'no-cors', // GAS returns opaque to browsers; that's fine for logging
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+        body: JSON.stringify(payload)
+      }
+    );
+
+    // 4) Update UI (optional)
+    if (statusEl) {
       statusEl.textContent = `Thanks for visiting!`;
     }
   } catch (e) {
     console.error(e);
-    statusEl.textContent = 'Could not log visit.';
+    if (statusEl) {
+      statusEl.textContent = 'Could not log visit.';
+    }
   }
 })();
